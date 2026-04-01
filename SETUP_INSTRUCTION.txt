@@ -1,0 +1,195 @@
+📁 СТРУКТУРА ПАПОК - КАК РАССТАВИТЬ ФАЙЛЫ
+==========================================
+
+Скачал все файлы? Вот как их правильно организовать:
+
+ПОЛНАЯ СТРУКТУРА:
+=================
+
+hh_fast_bot/
+│
+├── venv/                    ← Виртуальное окружение (создаётся при python -m venv venv)
+│
+├── logs/                    ← Папка для логов (создай вручную)
+│   └── (сюда будут сохраняться логи бота)
+│
+├── handlers/                ← ПАПКА (создай вручную)
+│   ├── __init__.py          ← handlers___init__.py переименуй в __init__.py
+│   ├── start.py             ← handlers_start.py переименуй в start.py
+│   ├── search.py            ← handlers_search.py переименуй в search.py
+│   └── filters.py           ← handlers_filters.py переименуй в filters.py
+│
+├── keyboards/               ← ПАПКА (создай вручную)
+│   ├── __init__.py          ← создай пустой файл
+│   └── search_keyboards.py  ← скопируй search_keyboards.py сюда
+│
+├── services/                ← ПАПКА (создай вручную)
+│   ├── __init__.py          ← создай пустой файл
+│   ├── hh_service.py        ← скопируй hh_service.py сюда
+│   ├── db_service.py        ← скопируй db_service.py сюда
+│   ├── cache_service.py     ← скопируй cache_service.py сюда
+│   └── formatter.py         ← скопируй formatter.py сюда
+│
+├── main.py                  ← Главный файл
+├── config.py                ← Конфиг
+├── models.py                ← Модели данных
+├── partners_config.py       ← Партнёрские вакансии (РЕДАКТИРУЙ ЗДЕСЬ!)
+│
+├── requirements.txt         ← Зависимости
+├── .env                     ← Переменные окружения (с токеном)
+│
+└── README.md                ← Документация
+
+
+ПОШАГОВО:
+=========
+
+1️⃣ СОЗДАЙ ПАПКИ:
+   Windows (cmd):
+   ```
+   mkdir hh_fast_bot
+   cd hh_fast_bot
+   mkdir handlers
+   mkdir keyboards
+   mkdir services
+   mkdir logs
+   ```
+   
+   Linux/macOS:
+   ```
+   mkdir -p hh_fast_bot/{handlers,keyboards,services,logs}
+   cd hh_fast_bot
+   ```
+
+2️⃣ СКОПИРУЙ ФАЙЛЫ:
+
+   ОСН ОВНЫЕ ФАЙЛЫ В КОРЕНЬ:
+   ├── main.py                 ← из выгрузки
+   ├── config.py               ← из выгрузки
+   ├── models.py               ← из выгрузки
+   ├── partners_config.py      ← из выгрузки
+   ├── .env                    ← УЖЕ СОЗДАН
+   └── README.md               ← из выгрузки
+
+3️⃣ HANDLERS ПАПКА:
+   handlers/
+   ├── __init__.py             ← пустой файл (из handlers___init__.py)
+   ├── start.py                ← из handlers_start.py (переименуй!)
+   ├── search.py               ← из handlers_search.py (переименуй!)
+   └── filters.py              ← из handlers_filters.py (переименуй!)
+
+4️⃣ KEYBOARDS ПАПКА:
+   keyboards/
+   ├── __init__.py             ← пустой файл
+   └── search_keyboards.py     ← из search_keyboards.py
+
+5️⃣ SERVICES ПАПКА:
+   services/
+   ├── __init__.py             ← пустой файл
+   ├── hh_service.py           ← из hh_service.py
+   ├── db_service.py           ← из db_service.py
+   ├── cache_service.py        ← из cache_service.py
+   └── formatter.py            ← из formatter.py
+
+6️⃣ LOGS ПАПКА:
+   logs/
+   └── (пусто, сюда будут писаться логи)
+
+
+КАК ПЕРЕИМЕНОВАТЬ ФАЙЛЫ:
+=======================
+
+Если скачал файл "handlers_start.py", переименуй в "start.py":
+
+Windows (через проводник):
+  1. Правый клик на файл
+  2. "Переименовать"
+  3. Введи "start.py"
+  4. Enter
+
+cmd:
+  ren handlers_start.py start.py
+
+Linux/macOS:
+  mv handlers_start.py start.py
+
+
+ТРЕБОВАНИЯ.ТХТ (уже должен быть):
+==================================
+
+hh_fast_bot/
+└── requirements.txt
+
+Содержание:
+aiogram==3.3.0
+asyncpg==0.29.0
+redis==5.0.0
+httpx==0.25.0
+python-dotenv==1.0.0
+loguru==0.7.2
+
+
+ФИНАЛЬНАЯ ПРОВЕРКА:
+===================
+
+После расставки файлов выполни:
+
+```bash
+# Активируй виртуальное окружение
+venv\Scripts\activate  # Windows
+# или
+source venv/bin/activate  # Linux/macOS
+
+# Установи зависимости
+pip install -r requirements.txt
+
+# Проверь что всё работает
+python -c "import main; print('✅ Импорт успешен')"
+
+# Запусти бота
+python main.py
+```
+
+Если нет ошибок - **ВСЁ ГОТОВО!** 🎉
+
+
+ГЛАВНЫЕ ОШИБКИ:
+===============
+
+❌ Ошибка: ModuleNotFoundError: No module named 'handlers'
+✅ Решение: Создай папку handlers/ с файлом __init__.py
+
+❌ Ошибка: ModuleNotFoundError: No module named 'services'
+✅ Решение: Создай папку services/ с файлом __init__.py
+
+❌ Ошибка: "Файл не найден .env"
+✅ Решение: Создай .env файл в корне с токенами
+
+❌ Ошибка: "BotToken is empty"
+✅ Решение: Проверь что BOT_TOKEN в .env не пустой
+
+❌ Ошибка: "No module named 'redis'"
+✅ Решение: pip install -r requirements.txt
+
+
+КОГДА ВСЁ РАССТАВЛЕНО:
+=====================
+
+1. Активируй виртуальное окружение
+2. Запусти: python main.py
+3. Открой Telegram и найди своего бота
+4. Нажми /start
+5. Начни тестировать! 🚀
+
+
+ДОПОЛНЕНИЕ:
+===========
+
+Если не можешь скачать все файлы одновременно:
+
+Создай каждый файл вручную:
+1. Блокнот → скопируй содержимое файла
+2. Сохрани как "имя_файла.py"
+3. В нужной папке
+
+Все файлы содержат полный код - ничего не пропущено!
