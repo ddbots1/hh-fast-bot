@@ -13,7 +13,7 @@ load_dotenv() # Повторный вызов для системных пере
 
 @dataclass(slots=True)
 class Settings:
-    bot_token: str = os.getenv("BOT_TOKEN", "")
+    bot_token: str = os.getenv("BOT_TOKEN", "8229276656:AAFeBfH9eVKNKge1JG-SvNegmp40IuCq1pA")
     telegram_proxy: str = os.getenv("TELEGRAM_PROXY", "")
     hh_api_base_url: str = os.getenv("HH_API_BASE_URL", "https://api.hh.ru")
     redis_url: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
