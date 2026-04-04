@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     """Настройки приложения"""
     
     # Telegram
-    BOT_TOKEN: str = Field(..., alias="BOT_TOKEN")
+    BOT_TOKEN: str = Field(..., alias="8229276656:AAFeBfH9eVKNKge1JG-SvNegmp40IuCq1pA")
     
     # PostgreSQL
     DB_HOST: str = Field(default="localhost")
